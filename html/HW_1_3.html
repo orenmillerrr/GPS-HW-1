@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Problem 3</title>
+<meta name="generator" content="MATLAB 24.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-01-16">
+<meta name="DC.source" content="HW_1_3.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Problem 3</h1>
+<pre class="codeinput">
+<span class="keyword">for</span> i = 1 : 3
+    A = 3 + 3*randn(1000,1);
+    B = 5 + 5*randn(1000,1);
+    C = A + B;
+    D = 3*A + 4*B;
+    E = 3*A - 4*B;
+
+    DATA = [A B C D E];
+
+    <span class="comment">% Part A - Find Mean and Variance for A, B, C, D, and E</span>
+
+    meanA(i) = mean(A);
+    meanB(i) = mean(B);
+    meanC(i) = mean(C);
+    meanD(i) = mean(D);
+    meanE(i) = mean(E);
+
+    varA(i) = var(A);
+    varB(i) = var(B);
+    varC(i) = var(C);
+    varD(i) = var(D);
+    varE(i) = var(E);
+
+    meanDATA(i,:) = mean(DATA);
+
+    covDATA(:,:,i) = cov(DATA);
+
+    fprintf(<span class="string">"\nSequence %g\n"</span>,i)
+    fprintf(<span class="string">"--------------------------\n"</span>)
+    fprintf(<span class="string">"Mean A = %.4f\n"</span>,meanA(i))
+    fprintf(<span class="string">"Mean B = %.4f\n"</span>,meanB(i))
+    fprintf(<span class="string">"Mean C = %.4f\n"</span>,meanC(i))
+    fprintf(<span class="string">"Mean D = %.4f\n"</span>,meanD(i))
+    fprintf(<span class="string">"Mean E = %.4f\n\n"</span>,meanE(i))
+
+    fprintf(<span class="string">"Var A = %.4f\n"</span>,varA(i))
+    fprintf(<span class="string">"Var B = %.4f\n"</span>,varB(i))
+    fprintf(<span class="string">"Var C = %.4f\n"</span>,varC(i))
+    fprintf(<span class="string">"Var D = %.4f\n"</span>,varD(i))
+    fprintf(<span class="string">"Var E = %.4f\n\n"</span>,varE(i))
+
+    fprintf(<span class="string">"Mean DATA = \n"</span>)
+    fprintf(<span class="string">"%.4f %.4f %.4f %.4f %.4f\n\n"</span>,meanDATA(i,:))
+
+    fprintf(<span class="string">"Cov DATA = \n"</span>)
+    fprintf(<span class="string">"%10.4f %10.4f %10.4f %10.4f %10.4f\n"</span>,covDATA(:,:,i))
+
+<span class="keyword">end</span>
+
+subplot(2,1,1)
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+plot(meanA,<span class="string">'.'</span>)
+plot(meanB,<span class="string">'.'</span>)
+plot(meanC,<span class="string">'.'</span>)
+plot(meanD,<span class="string">'.'</span>)
+plot(meanE,<span class="string">'.'</span>)
+title(<span class="string">"Mean for Each Sequence"</span>)
+xlabel(<span class="string">"Sequence Number"</span>)
+xlim([0,4])
+ylabel(<span class="string">"Mean"</span>)
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>)
+subplot(2,1,2)
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+plot(varA,<span class="string">'.'</span>)
+plot(varB,<span class="string">'.'</span>)
+plot(varC,<span class="string">'.'</span>)
+plot(varD,<span class="string">'.'</span>)
+plot(varE,<span class="string">'.'</span>)
+title(<span class="string">"Variance for Each Sequence"</span>)
+xlabel(<span class="string">"Sequence Number"</span>)
+xlim([0,4])
+ylabel(<span class="string">"Variance"</span>)
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>)
+</pre>
+<pre class="codeoutput">
+Sequence 1
+--------------------------
+Mean A = 2.9952
+Mean B = 5.0392
+Mean C = 8.0344
+Mean D = 29.1423
+Mean E = -11.1712
+
+Var A = 9.0474
+Var B = 25.7764
+Var C = 35.7774
+Var D = 505.2920
+Var E = 482.4056
+
+Mean DATA = 
+2.9952 5.0392 8.0344 29.1423 -11.1712
+
+Cov DATA = 
+    9.0474     0.4768     9.5242    29.0494    25.2350
+    0.4768    25.7764    26.2532   104.5359  -101.6751
+    9.5242    26.2532    35.7774   133.5854   -76.4401
+   29.0494   104.5359   133.5854   505.2920  -330.9953
+   25.2350  -101.6751   -76.4401  -330.9953   482.4056
+
+Sequence 2
+--------------------------
+Mean A = 3.2018
+Mean B = 5.0430
+Mean C = 8.2448
+Mean D = 29.7773
+Mean E = -10.5665
+
+Var A = 9.1237
+Var B = 23.2517
+Var C = 30.7014
+Var D = 434.0526
+Var E = 474.2290
+
+Mean DATA = 
+3.2018 5.0430 8.2448 29.7773 -10.5665
+
+Cov DATA = 
+    9.1237    -0.8370     8.2867    24.0229    30.7190
+   -0.8370    23.2517    22.4147    90.4959   -95.5180
+    8.2867    22.4147    30.7014   114.5189   -64.7990
+   24.0229    90.4959   114.5189   434.0526  -289.9149
+   30.7190   -95.5180   -64.7990  -289.9149   474.2290
+
+Sequence 3
+--------------------------
+Mean A = 3.0131
+Mean B = 4.9301
+Mean C = 7.9432
+Mean D = 28.7597
+Mean E = -10.6813
+
+Var A = 9.7196
+Var B = 24.2752
+Var C = 34.2136
+Var D = 478.5049
+Var E = 473.2524
+
+Mean DATA = 
+3.0131 4.9301 7.9432 28.7597 -10.6813
+
+Cov DATA = 
+    9.7196     0.1094     9.8290    29.5964    28.7210
+    0.1094    24.2752    24.3846    97.4289   -96.7723
+    9.8290    24.3846    34.2136   127.0253   -68.0513
+   29.5964    97.4289   127.0253   478.5049  -300.9263
+   28.7210   -96.7723   -68.0513  -300.9263   473.2524
+</pre>
+<img vspace="5" hspace="5" src="HW_1_3_01.png" alt=""> <p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Problem 3
+for i = 1 : 3
+    A = 3 + 3*randn(1000,1);
+    B = 5 + 5*randn(1000,1);
+    C = A + B;
+    D = 3*A + 4*B;
+    E = 3*A - 4*B;
+
+    DATA = [A B C D E];
+    
+    % Part A - Find Mean and Variance for A, B, C, D, and E
+    
+    meanA(i) = mean(A);
+    meanB(i) = mean(B);
+    meanC(i) = mean(C);
+    meanD(i) = mean(D);
+    meanE(i) = mean(E);
+    
+    varA(i) = var(A);
+    varB(i) = var(B);
+    varC(i) = var(C);
+    varD(i) = var(D);
+    varE(i) = var(E);
+    
+    meanDATA(i,:) = mean(DATA);
+    
+    covDATA(:,:,i) = cov(DATA);
+
+    fprintf("\nSequence %g\n",i)
+    fprintf("REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n")
+    fprintf("Mean A = %.4f\n",meanA(i))
+    fprintf("Mean B = %.4f\n",meanB(i))
+    fprintf("Mean C = %.4f\n",meanC(i))
+    fprintf("Mean D = %.4f\n",meanD(i))
+    fprintf("Mean E = %.4f\n\n",meanE(i))
+
+    fprintf("Var A = %.4f\n",varA(i))
+    fprintf("Var B = %.4f\n",varB(i))
+    fprintf("Var C = %.4f\n",varC(i))
+    fprintf("Var D = %.4f\n",varD(i))
+    fprintf("Var E = %.4f\n\n",varE(i))
+
+    fprintf("Mean DATA = \n")
+    fprintf("%.4f %.4f %.4f %.4f %.4f\n\n",meanDATA(i,:))
+
+    fprintf("Cov DATA = \n")
+    fprintf("%10.4f %10.4f %10.4f %10.4f %10.4f\n",covDATA(:,:,i))
+
+end
+
+subplot(2,1,1)
+hold on 
+grid on
+plot(meanA,'.')
+plot(meanB,'.')
+plot(meanC,'.')
+plot(meanD,'.')
+plot(meanE,'.')
+title("Mean for Each Sequence")
+xlabel("Sequence Number")
+xlim([0,4])
+ylabel("Mean")
+legend('A','B','C','D','E')
+subplot(2,1,2)
+hold on 
+grid on
+plot(varA,'.')
+plot(varB,'.')
+plot(varC,'.')
+plot(varD,'.')
+plot(varE,'.')
+title("Variance for Each Sequence")
+xlabel("Sequence Number")
+xlim([0,4])
+ylabel("Variance")
+legend('A','B','C','D','E')
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>
