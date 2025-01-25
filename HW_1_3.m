@@ -1,3 +1,4 @@
+clear;clc;close all
 %% Problem 3
 for i = 1 : 3
     A = 3 + 3*randn(1000,1);
