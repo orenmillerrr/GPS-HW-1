@@ -132,7 +132,7 @@ xlabel("Shift")
 ylabel("Correlation")
 snapnow
 
-%% Question 1 Bonus 2
+%% Question 2 Bonus 2
 
 seq1 = 2*ceil((rand(100,1)-.5))-1;
 for i = 1 : 100
